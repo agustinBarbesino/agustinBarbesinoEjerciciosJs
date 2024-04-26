@@ -101,13 +101,13 @@ if (nombre === "agustin" || nombre === "Agustin" || paseVip == true) {
     console.log("Bienvenido! Tiene pase libre.")
 } else {
     let entrada = confirm("¿Posee entrada?")
-    if (entrada == true) {
+    if (entrada) {
         let usar = confirm("¿Desea utilizarla?")
-        if (usar == true) {
+        if (usar) {
             console.log("Bienvenido!")
         } else {
             let compra = confirm("¿Desea comprar?")
-            if (compra == true) {
+            if (compra) {
                 dineroDisponible = parseInt(prompt("Ingrese dinero disponible"))
                 if (dineroDisponible >= 1000) {
                     console.log("Venta exitosa! Bienvenido!")
@@ -172,4 +172,119 @@ if (numeroIngresado == numeroIncognita) {
     } else {
         console.log("El numero ingresado es menor, Perdiste.")
     }
+}
+
+//9. Crear un programa que permita ingresar tu edad y decir si eres un infante (0 a 12
+//años), adolescente (13 a 18 años), un mayor joven (19 a 45 años) o un anciano (mas de
+//45 años), y en caso de ingresar una edad mayor a 100 mostrar un mensaje
+//preguntando si en realidad tiene esa edad.
+
+let edadIngresada = parseInt(prompt("Ingrese su edad: "))
+
+if (edadIngresada >= 0 && edadIngresada <= 12) {
+    console.log("Eres un infante.")
+} else if (edadIngresada >= 13 && edadIngresada <= 18) {
+    console.log("Eres un adolescente.")
+} else if (edadIngresada >= 19 && edadIngresada <= 45) {
+    console.log("Eres un mayor joven.")
+} else if (edadIngresada >= 46 && edadIngresada <= 99) {
+    console.log("Eres un anciano.")
+} else {
+    alert("¿Realmente eres mayor de 100?.")
+}
+
+//10. Crear un programa que permita el ingreso de “PIEDRA”, “PAPEL” o “TIJERAS” a 2
+//jugadores y muestre en pantalla cual de los 2 ha ganado o si han empatado. En caso de
+//algún ingreso incorrecto mostrar por pantalla que uno de los jugadores ha hecho
+//trampa.
+
+let eleccion1 = prompt("Ingrese elección jugador 1: (PIEDRA, PAPEL o TIJERAS)")
+let eleccion2 = prompt("Ingrese elección jugador 2: (PIEDRA, PAPEL o TIJERAS)")
+
+if (eleccion1 === "PIEDRA" && eleccion2 === "TIJERAS") {
+    console.log("Gana jugador 1")
+} else if (eleccion1 === "PIEDRA" && eleccion2 === "PAPEL") {
+    console.log("Gana jugador 2")
+} else if (eleccion1 === "PIEDRA" && eleccion2 === "PIEDRA") {
+    console.log("Empate")
+} else if (eleccion1 === "PAPEL" && eleccion2 === "PIEDRA") {
+    console.log("Gana jugador 1")
+} else if (eleccion1 === "PAPEL" && eleccion2 === "TIJERAS") {
+    console.log("Gana jugador 2")
+} else if (eleccion1 === "PAPEL" && eleccion2 === "PAPEL") {
+    console.log("Empate")
+} else if (eleccion1 === "TIJERAS" && eleccion2 === "PAPEL") {
+    console.log("Gana jugador 1")
+} else if (eleccion1 === "TIJERAS" && eleccion2 === "PIEDRA") {
+    console.log("Gana jugador 2")
+} else if (eleccion1 === "TIJERAS" && eleccion2 === "TIJERAS") {
+    console.log("Empate")
+}
+
+//11. Realizar un programa que permita el ingreso de un color y utilizando “switch” mostrar
+//por pantalla los siguientes mensajes según las opciones: Blanco o Negro: Falta de
+//color, Verde: El color de la naturaleza, Azul: El color del agua, Amarillo: El color del sol,
+//Rojo: El color del fuego, Marrón: el color de la tierra, y para cualquier otro valor:
+//Excelente elección, no lo teníamos pensado.
+
+let color = prompt("Ingrese un color: ")
+
+switch (color) {
+    case "Blanco" || "Negro":
+        console.log("Falta de color")
+        break;
+    case "Verde":
+        console.log("El color de la naturaleza")
+        break;
+    case "Azul":
+        console.log("El color del agua")
+        break;   
+    case "Amarillo":
+        console.log("El color del sol")
+        break;
+    case "Rojo":
+        console.log("El color del fuego")
+        break;
+    case "Marrón":
+        console.log("El color de la tierra")
+        break;
+    default:
+        console.log("Excelente elección no lo teníamos pensado")
+        break;
+}
+
+//12. Realizar un programa que permita el ingreso de 2 valores numéricos y una operación.
+//Según sea la operación ingresada (suma, resta, multiplicación, división) el programa
+//deberá mostrar en pantalla un mensaje junto con el resultado. En caso de haber
+//elegido división realizar la operación siempre que sea posible o mostrar un mensaje de
+//ERROR si el divisor ingresado fue 0.
+
+let num1 = parseInt(prompt("Ingrese el primer número"))
+let num2 = parseInt(prompt("Ingrese el segundo número"))
+let operacion = prompt("Ingrese operación: (suma, resta, multiplicación, división)")
+
+switch (operacion) {
+    case "suma":
+        let suma = num1 + num2
+        console.log("El resultado de la suma es: " + suma)
+        break;
+    case "resta":
+        let resta = num1 - num2
+        console.log("El resultado de la resta es: " + resta)
+        break;
+    case "multiplicacion":
+        let multiplicacion = num1 * num2
+        console.log("El resultado de la multiplicación es: " + multiplicacion)
+        break;
+    case "division":
+        if (num1 == 0 || num2 == 0) {
+            console.log("ERROR")
+        } else {
+            let division = num1 / num2
+            console.log("El resultado de la división es: " + division) 
+        }
+        break;
+    default:
+        console.log("Vuelva pronto!")
+        break;
 }
