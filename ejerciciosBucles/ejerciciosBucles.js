@@ -83,39 +83,110 @@ console.log("Los divisores son: " + divisores);
 //6. Dado un array de 10 elementos, realizar un programa que recorra ese array y
 //muestre un mensaje por consola con cada uno de los elementos del array.
 
+let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+for (let i = 0; i < array.length; i++) {
+    console.log(array[i])
+}
 
 //7. Dado un array de 10 numeros, realizar un programa que muestre por consola el
 //doble de cada uno de los elementos.
 
+array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+for (let i = 0; i < array.length; i++) {
+    console.log(array[i] * 2)
+}
 
 //8. Dado un array con al menos 5 objetos comprendidos por un grupo familiar, cada
 //objeto representa a 1 persona con al menos 4 propiedades, realizar un programa
 //que muestre un mensaje de presentacion por cada elemento del array.
 
+let pers1 = {
+    nombre: "Pedro", 
+    apellido: "Rodriguez",
+    edad: 56,
+    altura: 176
+}
 
+let pers2 = {
+    nombre: "Carla", 
+    apellido: "Paez",
+    edad: 54,
+    altura: 170
+}
+
+let pers3 = {
+    nombre: "Pablo", 
+    apellido: "Rodriguez",
+    edad: 26,
+    altura: 173
+}
+
+let pers4 = {
+    nombre: "Priscila", 
+    apellido: "Rodriguez",
+    edad: 22,
+    altura: 158
+}
+
+let pers5 = {
+    nombre: "Ramón", 
+    apellido: "Rodriguez",
+    edad: 17,
+    altura: 169
+}
+
+let personas = [pers1, pers2, pers3, pers4, pers5]
+
+for (let i = 0; i < personas.length; i++) {
+    console.log("Hola! Soy " + personas.nombre[i] + " " + personas.apellido[i] +", tengo " + personas.edad[i] + "años y mido " + personas.altura[i])
+}
 
 //9. Dado un array de 10 numeros, realizar un programa que recorra el array y solo
 //muestre los numeros impares.
 
-
+for (let i = 0; i < array.length; i++) {
+    if (array[i]%2 != 0) {
+        console.log(array[i]);
+    }
+    
+}
 
 //10. Realizar un programa que permita la entrada de numeros y calcule la suma de los
 //numeros pares por un lado y los impares por otro, el ingreso de dato finaliza cuando
 //el usuario ingresa un 0.
 
+while (numeroIngresado != 0) {
+    if (numeroIngresado%2 == 0) {
+        sumPar += numeroIngresado
+    } else {
+        sumImpar += numeroIngresado
+    }
+}
 
+console.log("Suma de números pares: " + sumPar)
+console.log("Suma de números impares: " + sumImpar)
 
 //11. Dado un array de 10 numeros, realizar un programa que imprima por pantalla el
 //numero mas grande.
 
-
+for (let i = 0; i < array.length; i++) {
+    let mayor
+    if(array[i] > mayor) {
+        mayor = array[i]
+    }
+}
 
 //12. Dado un array de 10 numeros, realizar un programa que imprima por pantalla el
 //numero mas chico.
 
-
+for (let i = 0; i < array.length; i++) {
+    let menor
+    if(array[i] < menor) {
+        menor = array[i]
+    }
+}
 
 //13. Realizar un programa que permita jugar a piedra papel o tijeras, se debera poder
 //ingresar los nombres de 2 jugadores. En el bucle del juego se debera pedir 1 a 1 las
