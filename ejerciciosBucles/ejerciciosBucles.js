@@ -11,15 +11,15 @@ for (let i = 1; i < 11; i++) {
 //2. Realizar un programa que permita el ingreso de numeros los cuales se tienen que ir
 //acumulando. El ingreso de datos terminara cuando el usuario ingrese un valor 0.
 
-let arrayNum = []
+let acumular = 0
 num = parseInt(prompt("Ingrese un número"))
 
 while (num != 0) {
-    arrayNum = num + " " + arrayNum;
+    acumular = acumular + num;
     num = parseInt(prompt("Ingrese un número"))
 }
 
-console.log(arrayNum);
+console.log(acumular);
 
 //3. Realizar en juego de adivinar el numero del los ejercicios del tema anterior, en una
 //variable guardar un numero que este en el rango 1 - 100. La persona debera poder
@@ -31,19 +31,23 @@ console.log(arrayNum);
 //felicitaciones y decirle en cuantos intentos lo ha realizado.
 
 let numeroIncognita = 54
+let intentos = 0
 let numeroIngresado = parseInt(prompt("Adivine el número: (entre 1 y 100)"))
-let i
-for (i = 1; numeroIncognita != numeroIngresado; i++) {
-    if (numeroIngresado > numeroIncognita) {
+
+do {
+    intentos++
+    if (numeroIngresado === numeroIncognita) {
+        alert("Felicitaciones! Adivinaste en " + intentos + " intentos.")
+    }else if (numeroIngresado > numeroIncognita) {
         alert("El número ingresado es mayor, intente nuevamente.");
         numeroIngresado = parseInt(prompt("Adivine el número: (entre 1 y 100)"))
     } else {
         alert("El número ingresado es menor, intente nuevamente.");
         numeroIngresado = parseInt(prompt("Adivine el número: (entre 1 y 100)"))
     }
-}
+} while (numeroIncognita != numeroIngresado);
 
-alert("Felicitaciones! Adivinaste en " + i + " intentos.");
+alert("Felicitaciones! Adivinaste en " + intentos + " intentos.");
 
 //4. Realizar un programa que permita decir si un numero es primo. Un numero es primo
 //si solo es divisible por el valor 1 y por si mismo. Ayuda: Usar la operacion de modulo.
@@ -52,15 +56,15 @@ alert("Felicitaciones! Adivinaste en " + i + " intentos.");
 //numero ya no es primo.
 
 num = parseInt(prompt("Verificador de números primos, ingrese un número:"))
-i = 1
-resto = num % i
-
-while (resto == 0) {
-    i++
-    resto = num % i 
+div = 0
+for (i = 1; i < num; i++) {
+    resto = num % i
+    if (resto == 0){
+        div++
+    }
 }
 
-if (i > 2) {
+if (div > 2) {
     alert("El número no es primo")
 } else {
     alert("El número es primo")
@@ -139,8 +143,8 @@ let pers5 = {
 
 let personas = [pers1, pers2, pers3, pers4, pers5]
 
-for (let i = 0; i < personas.length; i++) {
-    console.log("Hola! Soy " + personas.nombre[i] + " " + personas.apellido[i] +", tengo " + personas.edad[i] + "años y mido " + personas.altura[i])
+for (i = 0; i < personas.length; i++) {
+    console.log("Hola! Soy " + personas[i]["nombre"] + " " + personas[i]["apellido"] +", tengo " + personas[i]["edad"] + "años y mido " + personas[i]["altura"])
 }
 
 //9. Dado un array de 10 numeros, realizar un programa que recorra el array y solo
@@ -157,12 +161,17 @@ for (let i = 0; i < array.length; i++) {
 //numeros pares por un lado y los impares por otro, el ingreso de dato finaliza cuando
 //el usuario ingresa un 0.
 
+let sumPar = 0
+let sumImpar = 0
+numeroIngresado = parseInt(prompt("Ingrese un número a sumar: "))
+
 while (numeroIngresado != 0) {
     if (numeroIngresado%2 == 0) {
-        sumPar += numeroIngresado
+        sumPar = sumPar + numeroIngresado
     } else {
-        sumImpar += numeroIngresado
+        sumImpar = sumImpar + numeroIngresado
     }
+    numeroIngresado = parseInt(prompt("Ingrese un número a sumar: "))
 }
 
 console.log("Suma de números pares: " + sumPar)
@@ -171,22 +180,28 @@ console.log("Suma de números impares: " + sumImpar)
 //11. Dado un array de 10 numeros, realizar un programa que imprima por pantalla el
 //numero mas grande.
 
+let mayor = 0
+
 for (let i = 0; i < array.length; i++) {
-    let mayor
     if(array[i] > mayor) {
         mayor = array[i]
     }
 }
 
+console.log("El mayor es: " + mayor);
+
 //12. Dado un array de 10 numeros, realizar un programa que imprima por pantalla el
 //numero mas chico.
 
+let menor = 0
+
 for (let i = 0; i < array.length; i++) {
-    let menor
     if(array[i] < menor) {
         menor = array[i]
     }
 }
+
+console.log("El menor es: " + menor);
 
 //13. Realizar un programa que permita jugar a piedra papel o tijeras, se debera poder
 //ingresar los nombres de 2 jugadores. En el bucle del juego se debera pedir 1 a 1 las
@@ -194,17 +209,64 @@ for (let i = 0; i < array.length; i++) {
 //un empate. Caso contrario mostrar un mensaje con el nombre de la persona
 //ganadora.
 
+let player1 = prompt("Ingrese el nombre del jugador 1: ")
+let player2 = prompt("Ingrese el nombre del jugador 2: ")
+let eleccion1 = prompt("Ingrese elección " + player1 + ": (PIEDRA, PAPEL o TIJERAS)")
+let eleccion2 = prompt("Ingrese elección " + player2 + ": (PIEDRA, PAPEL o TIJERAS)")
 
+do {
+    if (eleccion1 === "PIEDRA" && eleccion2 === "TIJERAS") {
+        alert("Gana " + player1)
+    } else if (eleccion1 === "PIEDRA" && eleccion2 === "PAPEL") {
+        alert("Gana " + player2)
+    } else if (eleccion1 === "PAPEL" && eleccion2 === "PIEDRA") {
+        alert("Gana " + player1)
+    } else if (eleccion1 === "PAPEL" && eleccion2 === "TIJERAS") {
+        alert("Gana " + player2)
+    } else if (eleccion1 === "TIJERAS" && eleccion2 === "PAPEL") {
+        alert("Gana " + player1)
+    } else if (eleccion1 === "TIJERAS" && eleccion2 === "PIEDRA") {
+        alert("Gana " + player2)
+    } else {
+        alert("EMPATE")
+    }
+    eleccion1 = prompt("Ingrese elección " + player1 + ": (PIEDRA, PAPEL o TIJERAS)")
+    eleccion2 = prompt("Ingrese elección " + player2 + ": (PIEDRA, PAPEL o TIJERAS)")
+} while (eleccion1 === eleccion2);
 
 //14. Realizar un programa que imprima por consola un triangulo de 5 asteriscos de lado.
 
+let generador = ["*"]
 
+for (let i = 0; i < 5; i++) {
+    console.log(generador)
+    generador = generador + "*"
+}
 
 //15. Realizar un programa que imprima por consola un triangulo de 5 asteriscos de lado
 //pero invertido.
 
+generador = ["*", "*", "*", "*", "*"]
 
+for (let i = 0; i < 5; i++) {
+    console.log(generador)
+    generador.pop()
+}
 
 //16. Dado un array de 10 numeros desordenados, realizar un programa que imprima por
 //pantalla el array ordenado. (NO USAR SORT, solo ciclos FOR)
 
+let arrayNum = [5, 2, 15, 45, 3, 87, 54, 18, 97, 12]
+let temp = 0
+
+for (let i = 0; i < arrayNum.length; i++) {
+    for (let j = 0; j < array.length-1; j++) {
+        if (arrayNum[j] > arrayNum[j+1]) {
+            temp = arrayNum[j]
+            arrayNum[j] = arrayNum[j+1]
+            arrayNum [j+1] = temp
+        }
+    }
+}
+
+alert(arrayNum)
