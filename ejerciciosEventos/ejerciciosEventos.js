@@ -133,29 +133,41 @@ deleteButton.addEventListener("click", function () {
 })
 
 function deleteNote(id) {
-    notas.splice(id, 1, )
+    let index = notas.findIndex(nota => nota.id === id);
+    if (index !== -1) {
+        notas.splice(index, 1);
+    }
     printNotes(notas)
 }
 
 function marcarRealizada(id) {
     for (let i = 0; i < notas.length; i++) {
         if (id === notas[i].id) {
-            !notas[i].realizada
+            notas[i].realizada = !notas[i].realizada
         }
-        
     }
 }
 
-function checkFilter(notas) {
+let check = document.getElementById("realized")
+check.addEventListener("change", function () {
     let checked = []
     for (let i = 0; i < notas.length; i++) {
         if (notas[i].realizada) {
             checked.push(notas[i])
         }
     }
+    console.log(checked);
     printNotes(checked)
-}
+})
 
-function textFilter() {
-    
-}
+let search = document.getElementById("search")
+search.addEventListener("change", function () {
+    let checked = []
+    for (let i = 0; i < notas.length; i++) {
+        if (notas[i].text) {
+            checked.push(notas[i])
+        }
+    }
+    console.log(checked);
+    printNotes(checked)
+})
